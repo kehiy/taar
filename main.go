@@ -1,7 +1,7 @@
 package main
 
 import (
-	"taar/cmd"
+	"github.com/kehiy/taar/cmd"
 
 	"github.com/spf13/cobra"
 )

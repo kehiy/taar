@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"log"
 
-	"taar/types"
-	"taar/utils"
+	cobra "github.com/spf13/cobra"
 
-	"github.com/spf13/cobra"
+	"github.com/kehiy/taar/types"
+	"github.com/kehiy/taar/utils"
 )
 
 func BuildIPCmd(parentCmd *cobra.Command) {
