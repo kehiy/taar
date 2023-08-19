@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	var rootCmd = &cobra.Command{
+	rootCmd := &cobra.Command{
 		Use:     "taar",
 		Version: "0.7.0",
 	}
