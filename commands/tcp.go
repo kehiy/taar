@@ -2,7 +2,6 @@ package commands
 
 import (
 	"net"
-	"os"
 
 	"github.com/spf13/cobra"
 )
@@ -29,13 +28,16 @@ func buildListenTCPCommand(parentCmd *cobra.Command) {
 		if len(args) == 0 {
 			cmd.PrintErr("please provide an address to listen.")
 		}
+
 		l, err := net.Listen("tcp", args[0])
 		if err != nil {
 			cmd.PrintErrf("can't listen tcp, error:\n%v", err)
 		} else {
 			cmd.Printf("start tcp server on: %s\n", args[0])
+
 			pch := make(chan string, 1024)
 			go accept(l, pch)
+
 			for msg := range pch {
 				cmd.Printf("new packet\n data: %s\n", msg)
 			}
@@ -57,26 +59,32 @@ func buildSendPacketTCPCommand(parentCmd *cobra.Command) {
 		if len(args) == 0 {
 			cmd.PrintErrln("please provide data to send")
 		}
-		laddr := &net.TCPAddr{
+
+		addr := &net.TCPAddr{
 			IP:   net.ParseIP(*toOpt),
 			Port: *portOpt,
 		}
-		conn, err := net.DialTCP("tcp", nil, laddr)
+
+		conn, err := net.DialTCP("tcp", nil, addr)
 		if err != nil {
 			cmd.PrintErrf("can not Dial TCP server\n error:%v\n", err)
-			os.Exit(1)
 		}
+
 		defer conn.Close()
 		n, err := conn.Write([]byte(args[0]))
 		if err != nil {
 			cmd.PrintErrf("write to connection failed\n error:%v\n", err)
 		}
+
 		cmd.Printf("%d bytes send\n waiting for respond\n", n)
+
 		buf := make([]byte, 1024)
+
 		_, err = conn.Read(buf)
 		if err != nil {
 			cmd.PrintErrf("read from connection failed\n error:%v\n", err)
 		}
+
 		cmd.Printf("%v\n", string(buf))
 	}
 }
