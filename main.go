@@ -2,7 +2,6 @@ package main
 
 import (
 	commands "github.com/kehiy/taar/commands"
-
 	"github.com/spf13/cobra"
 )
 

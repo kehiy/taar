@@ -7,8 +7,8 @@ import (
 	"net/http"
 )
 
-func GetDataHTTP(URL string) []byte {
-	req, _ := http.NewRequestWithContext(context.Background(), http.MethodGet, URL, io.MultiReader())
+func GetDataHTTP(url string) []byte {
+	req, _ := http.NewRequestWithContext(context.Background(), http.MethodGet, url, io.MultiReader())
 
 	response, err := http.DefaultClient.Do(req) //#nosec
 	if err != nil {
