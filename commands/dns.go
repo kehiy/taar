@@ -74,14 +74,14 @@ func buildAskCommand(parentCmd *cobra.Command) {
 }
 
 // ! not CMDs.
-func changeDNS(DNSs []string) error {
+func changeDNS(dnss []string) error {
 	path := "/etc/resolv.conf"
 
 	newContent := `
 	# DO NOT CHANGE!
 	# managed by taar network manager.
 	`
-	for _, dns := range DNSs {
+	for _, dns := range dnss {
 		newContent += fmt.Sprintf("nameserver %s\n", dns)
 	}
 

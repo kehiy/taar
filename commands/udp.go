@@ -47,7 +47,7 @@ func buildListenUDPCommand(parentCmd *cobra.Command) {
 		for {
 			message := make([]byte, 20)
 
-			n, remote, err := conn.ReadFromUDP(message[:])
+			n, remote, err := conn.ReadFromUDP(message[:]) //nolint
 			if err != nil {
 				cmd.PrintErrf("packet loss: \nerror: %v\n remote: %v\n", err, remote)
 			}

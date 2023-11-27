@@ -4,10 +4,9 @@ import (
 	"encoding/json"
 	"net"
 
-	cobra "github.com/spf13/cobra"
-
 	"github.com/kehiy/taar/types"
 	"github.com/kehiy/taar/utils"
+	cobra "github.com/spf13/cobra"
 )
 
 func BuildIPCommand(parentCmd *cobra.Command) {
