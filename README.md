@@ -16,14 +16,6 @@ Taar or `تار` in persian means net.
 go install github.com/kehiy/taar@latest
 ```
 
-# Documents
-
-use `--help`` to find out how it works!
-
-### Or
-
-check the [Documents](./doc)
-
 # Contribution
 Contributions are welcomed!
 also It's good to [check this](./CONTRIBUTING.md) before.
