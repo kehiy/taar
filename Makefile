@@ -24,3 +24,4 @@ fmt:
 
 check:
 	golangci-lint run --build-tags "${BUILD_TAG}" --timeout=20m0s
+	
